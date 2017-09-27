@@ -1,1 +1,6 @@
 <h1>Recipe: <%= @recipe.name %></h1>
+<% if @category %>
+  <h2>This recipe is in: <%= @category.group %></h2>
+<% else %>
+  <p>This recipe does not have a category</p>
+<% end %>

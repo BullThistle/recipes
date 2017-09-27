@@ -20,10 +20,25 @@ end
 
 post '/recipes' do
   name = params.fetch 'name'
-  ingredients = params.fetch 'ingredients'
   instructions = params.fetch 'instructions'
   rating = params.fetch 'rating'
-  Recipe.create({:name => name, :ingredients => ingredients, :instructions => instructions, :rating => rating})
+  category = params.fetch 'category'
+  cat = Category.find_or_initialize_by group: category
+  cat.save
+  recipe = Recipe.create({:name => name, :instructions => instructions, :rating => rating})
+
+  recipe.categories.create({:group => cat})
+
+  @ingredients = params.fetch('ingredients').split(', ')
+  @ingredients.each do |ingredient|
+    if Ingredient.exists?(name: ingredient)
+      ing = ingredients.find(name: ingredient)
+    else
+      ing = Ingredient.create({:name => ingredient})
+    end
+    recipe.push(ing)
+  end
+
   redirect '/recipes'
 end
 
@@ -35,25 +50,30 @@ end
 
 get '/recipes/:id' do
   @recipe = Recipe.find(params.fetch('id').to_i)
-  @categories = Category.all
+  if @recipe.categories
+    @category = Category.find(@recipe.categories)
+  else
+    @category = nil
+  end
+
   erb :recipe
 end
 
 get '/categories/:id' do
-  @category = Category.find(params.fetch('id').to_i)
-  @recipes = Recipe.find(params.fetch('id').to_i)
+  # @category = Category.find(params.fetch('id').to_i)
+  # @recipes = Recipe.find(params.fetch('id').to_i)
 end
 
-patch '/recipes/:id' do
-  category_id = params.fetch('category_id').to_i
-  @recipe = Recipe.find(params.fetch('id').to_i)
-  @recipe.update({:category_id => category_id})
-  redirect back
-end
+# patch '/recipes/:id' do
+#   category_id = params.fetch('category_id').to_i
+#   @recipe = Recipe.find(params.fetch('id').to_i)
+#   @recipe.update({:category_id => category_id})
+#   redirect back
+# end
 
-patch '/categories/:id' do
-  recipe = Recipe.find(params.fetch('recipe_id').to_i)
-  @category = Category.find(params.fetch('id').to_i)
-  @category.recipes.push(recipe)
-  redirect back
-end
+# patch '/categories/:id' do
+#   recipe = Recipe.find(params.fetch('recipe_id').to_i)
+#   @category = Category.find(params.fetch('id').to_i)
+#   @category.recipes.push(recipe)
+#   redirect back
+# end
