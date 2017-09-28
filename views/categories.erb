@@ -1,6 +1,5 @@
-<h1>Categories</h1>
-
 <% if @categories.any? %>
+<h1>Categories</h1>
   <ul>
     <% @categories.each do |c| %>
       <li><a href="/categories/<%= c.id %>"><% c.group %></a></li>
@@ -11,7 +10,7 @@
 <% end %>
 
 <h3>Add a category: </h3>
-<form action="/category" method="post">
+<form action="/categories" method="post">
   <label for="group">Category:  </label>
   <input type="text" name="group" id="group">
   <button type="submit">Add Categoy</button>

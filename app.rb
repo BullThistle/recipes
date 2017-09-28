@@ -25,18 +25,14 @@ post '/recipes' do
   category = params.fetch 'category'
   cat = Category.find_or_initialize_by group: category
   cat.save
-  recipe = Recipe.create({:name => name, :instructions => instructions, :rating => rating})
+  recipe = Recipe.create({:name => name, :instruction => instructions, :rating => rating})
 
-  recipe.categories.create({:group => cat})
+  recipe.categories.push(cat)
 
-  @ingredients = params.fetch('ingredients').split(', ')
-  @ingredients.each do |ingredient|
-    if Ingredient.exists?(name: ingredient)
-      ing = ingredients.find(name: ingredient)
-    else
-      ing = Ingredient.create({:name => ingredient})
-    end
-    recipe.push(ing)
+  ingredients = params.fetch('ingredients').split(', ')
+  ingredients.each do |ingredient|
+    ing = Ingredient.find_or_initialize_by name: ingredient
+    recipe.ingredients.push(ing)
   end
 
   redirect '/recipes'
@@ -50,11 +46,8 @@ end
 
 get '/recipes/:id' do
   @recipe = Recipe.find(params.fetch('id').to_i)
-  if @recipe.categories
-    @category = Category.find(@recipe.categories)
-  else
-    @category = nil
-  end
+  # binding.pry
+  @categories = @recipe.categories
 
   erb :recipe
 end
