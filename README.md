@@ -38,4 +38,4 @@ Navigate to `localhost:4567` in browser.
 License
 -------
 
-GNU GPL v2. Copyright 2015 **Rafael Furry and Erik Zakrzewski**
+GNU GPL v2. Copyright 2017 **Rafael Furry and Erik Zakrzewski**
