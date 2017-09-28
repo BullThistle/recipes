@@ -8,7 +8,6 @@
 
 <% else %>
 
-<p>Current Recipes</p>
 <ul>
 
   <% @recipes.each() do |recipe| %>
@@ -20,23 +19,3 @@
 </ul>
 
 <% end %>
-
-<h3>Add a recipe: </h3>
-<form action="/recipes" method="post">
-  <label for="name">Recipe Name:  </label>
-  <input type="text" name="name" id="name">
-  <label for="ingredients">Ingredients: </label>
-  <input type="text" name="ingredients" id="ingredients">
-  <label for="instructions">Instructions:  </label>
-  <input type="text" name="instructions" id="instructions">
-  <label for="category">Tags:  </label>
-  <input type="text" name="category" id="category">
-  <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-  <button type="submit">Add Recipe</button>
-</form>

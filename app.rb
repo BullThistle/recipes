@@ -33,7 +33,11 @@ get '/ingredients' do
   erb :ingredients
 end
 
-post '/recipes' do
+get '/add' do
+  erb :add
+end
+
+post '/add' do
   name = params.fetch 'name'
   instructions = params.fetch 'instructions'
   rating = params.fetch 'rating'
