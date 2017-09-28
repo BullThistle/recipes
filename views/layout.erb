@@ -2,43 +2,29 @@
 <html>
   <head>
     <title>Recipes</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js">
-
-    </script>
-    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="js/scripts.js"></script>
   </head>
   <body>
-    <div class="container">
 
-  <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="/recipes">View Recipes</a></li>
-        <li class="tab col s3"><a class="active" href="/categories">View Categories</a></li>
-        <li class="tab col s3"><a class="active" href="/ingredients">View Ingredients</a></li>
-        <li class="tab col s3"><a class="active" href="/add">Add A Recipe</a></li>
-      </ul>
+    <div class="rating">
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s2"><a target="_self" href="/">Home</a></li>
+            <li class="tab col s2"><a target="_self" href="/recipes">View Recipes</a></li>
+            <li class="tab col s2"><a target="_self" href="/categories">View Categories</a></li>
+            <li class="tab col s2"><a target="_self" href="/ingredients">View Ingredients</a></li>
+            <li class="tab col s2"><a target="_self" href="/add">Add A Recipe</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-
-  </div>
     <div class="container">
       <%= yield %>
-    </div>
-
-    <br>
-    <hr>
-    <br>
-
-    <div id="navigation">
-      <ul>
-        <li><a href="/">Go Home</a></li>
-      </ul>
-    </div>
-
-
     </div>
   </body>
 </html>

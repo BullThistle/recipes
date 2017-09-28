@@ -1,3 +1,13 @@
 body{
-  
+  background-image: url(../images/carrots.jpg);
+  background-repeat: no-repeat;
+}
+
+
+.rating {
+  padding-left: 20vh;
+}
+
+.float_right {
+  float: right;
 }

@@ -13,8 +13,18 @@
 <%= @recipe.instruction %>
 <h4>Rating: </h4>
 <%= @recipe.rating %>
+<br>
+<br>
+<br>
+<br>
 
 <form action="/recipes/<%= @recipe.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button type="submit" name="button">Delete Recipe</button>
+ <input type="hidden" name="_method" value="edit">
+ <button class="btn waves-effect waves-teal" type="submit" name="button">Edit Recipe</button>
 </form>
+<div class="float_right">
+  <form action="/recipes/<%= @recipe.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn waves-effect waves-teal" type="submit" name="button">Delete Recipe</button>
+  </form>
+</div>

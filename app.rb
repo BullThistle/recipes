@@ -87,6 +87,8 @@ delete '/recipes/:id' do
   redirect '/recipes'
 end
 
+
+
 # patch '/recipes/:id' do
 #   category_id = params.fetch('category_id').to_i
 #   @recipe = Recipe.find(params.fetch('id').to_i)

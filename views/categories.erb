@@ -1,8 +1,10 @@
-<% if @categories.any? %>
 <h1>Categories</h1>
+<hr>
+<% if @categories.any? %>
   <ul>
     <% @categories.each do |category| %>
       <li><a href="/categories/<%= category.id %>"><%= category.group %></a></li>
+      <br>
     <% end %>
   </ul>
 <% else %>
