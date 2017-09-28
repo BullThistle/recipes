@@ -5,8 +5,16 @@
     <ul>
       <li><%= category.group %></li>
     </ul>
-    <%#binding.pry%>
   <% end %>
 <% else %>
   <p>There are no categories for this recipe</p>
 <% end %>
+<h4>Instructions: </h4>
+<%= @recipe.instruction %>
+<h4>Rating: </h4>
+<%= @recipe.rating %>
+
+<form action="/recipes/<%= @recipe.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" name="button">Delete Recipe</button>
+</form>

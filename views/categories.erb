@@ -1,17 +1,10 @@
 <% if @categories.any? %>
 <h1>Categories</h1>
   <ul>
-    <% @categories.each do |c| %>
-      <li><a href="/categories/<%= c.id %>"><% c.group %></a></li>
+    <% @categories.each do |category| %>
+      <li><a href="/categories/<%= category.id %>"><%= category.group %></a></li>
     <% end %>
   </ul>
 <% else %>
   <p>There are no categories</p>
 <% end %>
-
-<h3>Add a category: </h3>
-<form action="/categories" method="post">
-  <label for="group">Category:  </label>
-  <input type="text" name="group" id="group">
-  <button type="submit">Add Categoy</button>
-</form>
